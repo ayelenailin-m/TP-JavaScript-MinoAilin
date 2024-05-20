@@ -1,5 +1,7 @@
 let tareas = [];
 
+// Primero agrego las funciones para las tareas
+
 // Función para agregar una tarea
 function agregarTarea(nombre) {
     //Validacíon pa que el nombre no esté vacío ni tenga espacio al principio o final
@@ -8,21 +10,22 @@ function agregarTarea(nombre) {
         alert("Error: El nombre de la tarea no puede estar vacío.");
         return;
     }
-    // Agregar la tarea al array
-    tareas.push(nombre.trim()); 
+    // Agregar la tarea al array, el push agrega un elemnto al final del array
+    tareas.push(nombre.trim());
     alert("Tarea agregada con exito.");
 }
 
 // Función para listar las tareas
 function listarTareas() {
-    console.log("Lista de tareas:");
+    let listaTareas = "Lista de tareas:\n";
 
-    if (tareas.length === 0) {
+    if (tareas.length === 0) { // length devuelve la cantidad de elementos en el array
         alert("No hay tareas.");
     } else {
         tareas.forEach((tarea, index) => { // forEach() metodo para iterar sobre cada tarea en el array
-            console.log(`${index + 1}. ${tarea}`); // Imprime cada tarea junto con su número de índice mas uno
+            listaTareas += `${index + 1}. ${tarea}\n`; // Imprimirá cada tarea junto con su número de índice mas uno
         })
+        alert(listaTareas)
     }
 }
 
@@ -37,15 +40,22 @@ function editarTarea(nombreOriginal, nombreNuevo) {
     if (index === -1) {
         alert("Error: La tarea especidicada no se encontró en la lista");
     } else {
-        tareas[index] = nombreNuevo.trim(); // Reemplaza en la posición del index el nuevo nombre 
+        // tareas[index] = nombreNuevo.trim(); // Reemplaza en la posición del index el nuevo nombre u otra opción:
+        tareas.splice(index, 1, nombreNuevo.trim()); // splice sirve tanto para modificar como para eliminar elementos
         alert("Tarea editada con éxito.");
     }
 }
 
 // Función pa eliminar
 function eliminarTarea(tareaAEliminar) {
+//Validar que no esté vacío
+if (tareaAEliminar.trim() === ''){
+    alert("Error: El nombre no puede estar vacío.");
+    return;
+}
+
     const index = tareas.indexOf(tareaAEliminar);
-    
+
     if (index === -1) {
         alert("Error: La tarea especificada no se encontró en la lista.");
     } else {
