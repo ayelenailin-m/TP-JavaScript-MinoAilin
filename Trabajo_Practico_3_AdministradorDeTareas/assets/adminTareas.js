@@ -1,15 +1,14 @@
 let tareas = [];
 
-// Primero agrego las funciones para las tareas
+// Primero agrego las funciones para las tareas. Espero no les moleste mis comentarios, es para no olvidar que hace cada cosa al repasar después. Gracias. 
 
 // Función para agregar una tarea
 function agregarTarea(nombre) {
     //Validacíon pa que el nombre no esté vacío ni tenga espacio al principio o final
-    // .trim() es un método que elimina los espacios en blanco al principio y al final de un string
-    if (nombre.trim() === '') {
+    if (nombre.trim() === '') { // .trim() es un método que elimina los espacios en blanco al principio y al final de un string
         alert("Error: El nombre de la tarea no puede estar vacío.");
         return;
-    }
+    } 
     // Agregar la tarea al array, el push agrega un elemnto al final del array
     tareas.push(nombre.trim());
     alert("Tarea agregada con exito.");
@@ -48,11 +47,11 @@ function editarTarea(nombreOriginal, nombreNuevo) {
 
 // Función pa eliminar
 function eliminarTarea(tareaAEliminar) {
-//Validar que no esté vacío
-if (tareaAEliminar.trim() === ''){
-    alert("Error: El nombre no puede estar vacío.");
-    return;
-}
+    //Validar que no esté vacío
+    if (tareaAEliminar.trim() === '') {
+        alert("Error: El nombre no puede estar vacío.");
+        return;
+    }
 
     const index = tareas.indexOf(tareaAEliminar);
 
@@ -88,7 +87,7 @@ function opciones() {
                 eliminarTarea(tareaAEliminar);
                 break;
             case 5:
-                alert("Adiós.");
+                alert("Adiós. Vuelva pronto.");
                 break;
             default:
                 alert("Opción no válida. Por favor, seleccione una opción válida.");
